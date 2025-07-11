@@ -13,5 +13,6 @@ foreach ($xml->alumno as $a) {
     'asignatura' => (string)$a->asignatura
   ];
 }
+file_put_contents('debug.log', print_r($result, true));
 echo json_encode($result);
 ?>

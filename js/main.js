@@ -40,16 +40,12 @@ function guardarAlumnos() {
     document.getElementById('formAlumno').reset();
   });
 }
+function eliminarAlumnoPorId(id) {
+  const confirmacion = confirm(`¿Estás seguro de que deseas eliminar al alumno con ID ${id}?`);
+  if (!confirmacion) return;
 
-function renderTabla() {
-  const tbody = document.querySelector('#tablaAlumnos tbody');
-  tbody.innerHTML = '';
-  alumnos.forEach(a => {
-    const tr = document.createElement('tr');
-    tr.innerHTML = `<td>${a.id}</td><td>${a.nombre}</td><td>${a.curso}</td><td>${a.email}</td><td>${a.asignatura}</td>
-      <td><button class="btn btn-sm btn-secondary" onclick="editar('${a.id}')">Editar</button></td>`;
-    tbody.appendChild(tr);
-  });
+  alumnos = alumnos.filter(a => a.id !== id);
+  guardarAlumnos(); // vuelve a guardar y renderizar la tabla
 }
 
 function editar(id) {
@@ -60,4 +56,24 @@ function editar(id) {
   document.getElementById('curso').value = a.curso;
   document.getElementById('email').value = a.email;
   document.getElementById('asignatura').value = a.asignatura;
+}
+
+function renderTabla() {
+  const tbody = document.querySelector('#tablaAlumnos tbody');
+  tbody.innerHTML = '';
+  alumnos.forEach(a => {
+     console.log('Renderizando:', a);
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+  <td>${a.id}</td>
+  <td>${a.nombre}</td>
+  <td>${a.curso}</td>
+  <td>${a.email}</td>
+  <td>${a.asignatura}</td>
+  <td><button class="btn btn-sm btn-secondary" onclick="editar('${a.id}')">Editar</button></td>
+  <td><button class="btn btn-sm btn-danger" onclick="eliminarAlumnoPorId('${a.id}')">Eliminar</button></td>
+`;
+
+    tbody.appendChild(tr);
+  });
 }

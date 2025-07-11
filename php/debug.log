@@ -1,0 +1,25 @@
+Array
+(
+    [alumnos] => Array
+        (
+            [0] => Array
+                (
+                    [id] => A001
+                    [nombre] => Juan Pérez
+                    [curso] => 2º ESO
+                    [email] => asdasdasd@asdasd.asda
+                    [asignatura] => MAT002
+                )
+
+            [1] => Array
+                (
+                    [id] => A002
+                    [nombre] => Constantino Lantigua
+                    [curso] => 2º ESO
+                    [email] => lantigua@gmail.com
+                    [asignatura] => MAT001
+                )
+
+        )
+
+)
